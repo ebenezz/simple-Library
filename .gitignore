@@ -1,0 +1,17 @@
+# ASP.NET Core
+bin/
+obj/
+*.user
+*.suo
+*.db
+
+# Angular
+node_modules/
+dist/
+.env
+
+# VS Code
+.vscode/
+
+# Others
+.DS_Store

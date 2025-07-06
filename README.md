@@ -60,6 +60,6 @@ ng serve
 
 Frontend will be available at: http://localhost:4200
 
-
-🧑‍💻 Author
+```
+### 🧑‍💻 Author
 Made by Abenezer Tewodros — CS Student & Developer

@@ -1,0 +1,26 @@
+<mat-toolbar color="accent">
+  {{ isEditMode ? 'Edit Author' : 'Add Author' }}
+</mat-toolbar>
+
+<mat-card>
+  <form [formGroup]="authorForm" (ngSubmit)="onSubmit()">
+    
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" required />
+      <mat-error *ngIf="authorForm.get('name')?.invalid">Name is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Bio</mat-label>
+      <textarea matInput formControlName="bio"></textarea>
+    </mat-form-field>
+
+    <div class="actions">
+      <button mat-raised-button color="accent" type="submit" [disabled]="authorForm.invalid">
+        {{ isEditMode ? 'Update' : 'Create' }}
+      </button>
+      <button mat-button type="button" (click)="resetForm()">Clear</button>
+    </div>
+  </form>
+</mat-card>

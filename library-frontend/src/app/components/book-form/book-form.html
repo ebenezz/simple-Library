@@ -1,0 +1,39 @@
+
+
+<mat-toolbar color="primary">
+  {{ isEditMode ? 'Edit Book' : 'Add Book' }}
+</mat-toolbar>
+
+<mat-card>
+  <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Title</mat-label>
+      <input matInput formControlName="title" required />
+      <mat-error *ngIf="bookForm.get('title')?.invalid">Title is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>ISBN</mat-label>
+      <input matInput formControlName="isbn" required />
+      <mat-error *ngIf="bookForm.get('isbn')?.invalid">ISBN is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Author</mat-label>
+      <mat-select formControlName="authorId" required>
+        <mat-option *ngFor="let author of authors" [value]="author.id">
+          {{ author.name }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="bookForm.get('authorId')?.invalid">Author is required</mat-error>
+    </mat-form-field>
+
+    <div class="actions">
+      <button mat-raised-button color="primary" type="submit" [disabled]="bookForm.invalid">
+        {{ isEditMode ? 'Update' : 'Create' }}
+      </button>
+      <button mat-button type="button" (click)="resetForm()">Clear</button>
+    </div>
+  </form>
+</mat-card>
